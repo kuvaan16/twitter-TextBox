@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <title>K16Twitte</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="autoClick();">
+    <div class="card" id="htmlContent">
+      <div class="icon">
+        <div class="title">
+          <img
+            src="assets/img/photo_2023-02-15_22-28-11.jpg"
+            width="50px"
+            alt=""
+          />
+          <div>
+            <h2 class="name">Kuvan16</h2>
+            <h5 class="tag-name">@kuvaan16</h5>
+          </div>
+        </div>
+        <div class="twitter-icon">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </div>
+      </div>
+      <div class="input">
+        <textarea name="" id="" cols="6" maxlength="200" rows="10">
+Let's see whate we can do</textarea
+        >
+      </div>
+      <div class="data">
+        <p>16:16 · 16/3/23 · <b>16.16K</b> Views</p>
+      </div>
+      <div class="line"></div>
+      <div class="likes">
+        <ion-icon name="heart-outline"> </ion-icon>
+        <p class="likes-count">1,616</p>
+      </div>
+    </div>
+    <a id="download">SAVE</a>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script type="text/javascript">
+      function autoClick() {
+        $("#download").click();
+      }
+
+      $(document).ready(function () {
+        var element = $("#htmlContent");
+
+        $("#download").on("click", function () {
+          html2canvas(element, {
+            onrendered: function (canvas) {
+              var imageData = canvas.toDataURL("image/png");
+              var newData = imageData.replace(
+                /^data:image\/jpg/,
+                "data:application/octet-stream"
+              );
+              $("#download").attr("download", "kk16.png").attr("href", newData);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
